@@ -1,0 +1,23 @@
+##Nouns
+
+-game
+-players
+-turns
+-question
+
+question
+-stores randomly generated number states
+-creates question with the two random numbers
+
+turns
+-stores who's turn it is (ie. current player)
+
+players
+-stores how many lives they have left
+
+game 
+
+- allows for user input for the answer
+- displays the question, lives, and turn for both players
+
+
