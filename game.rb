@@ -1,7 +1,6 @@
 # - allows for user input for the answer
 # - displays the question, lives, and turn for both players
 
-require './turn'
 require './question'
 require './player'
 require './game'
@@ -24,7 +23,17 @@ class Game
       self.turn = player_one
     end
   end
-  
+
+  def loser?
+    if turn.lives == 0
+      set_turn
+      print "#{turn.name} wins with a score of #{turn.lives}/3.\n"
+      print "--------- GAME OVER ---------\n"
+      print "Good bye!\n"
+      exit(0)
+    end
+  end
+
   def start_game
     print "Hello, welcome to Two Player Maths Game\n"
       while true
@@ -36,46 +45,12 @@ class Game
         else
           print "Yes! You are correct.\n"
         end
-        print "#{player_one.lives}/3 vs #{player_two.lives}/3\n"
+        loser?      
         set_turn
+        print "P1:#{player_one.lives}/3 vs P2:#{player_two.lives}/3\n"
+        print "--------- NEW TURN --------- \n"
 
       end
-  end
-  
-  
+  end 
   
 end
-
-
-# def start_game
-#   print "Hello, welcome to Two Player Maths Game\n"
-#     while true
-#       if player_one.turn == true
-#         print "Player 1: #{question.generate_question}"
-#         print "> "
-#         choice = $stdin.gets.chomp
-#         if choice != question.get_answer
-#           print "Seriously? No!\n"
-#           player_one.lives -= 1
-#         else
-#           print "Yes! You are correct.\n"
-#         end
-#         print "#{player_one.lives}/3 vs #{player_two.lives}/3\n"
-#         player_one.turn = false
-#         player_two.turn = true
-#       else
-#         print "Player 2: #{question.generate_question}"
-#         print "> "
-#         choice = $stdin.gets.chomp
-#         if choice != question.get_answer
-#           print "Seriously? No!\n"
-#           player_two.lives -= 1
-#         else
-#           print "Yes! You are correct.\n"
-#         end
-#         print "#{player_one.lives}/3 vs #{player_two.lives}/3\n"
-#         player_one.turn = true
-#         player_two.turn = false
-#       end
-#     end
-# end
