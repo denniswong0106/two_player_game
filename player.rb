@@ -3,12 +3,11 @@
 
 class Player
 
-  attr_accessor :lives, name, :turn
+  attr_accessor :lives, :name
 
-  def initialize(name, turn)
+  def initialize(name)
     @name = name
     @lives = 3
-    @turn = turn
   end
 
 end
